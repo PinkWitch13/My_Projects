@@ -1,14 +1,14 @@
 import datetime
 import zoneinfo
-import time
+from app import MyTimeZone
 
 time_zones = zoneinfo.available_timezones()
 
-import app
+def user_time_now():
+    ut_now = str(datetime.datetime.utcnow(tz = zoneinfo.ZoneInfo(time_zones)))
+    return ut_now
 
-def my_time_now(user_tz):
-    time_now = datetime.now(tz = ZoneInfo(user_tz))
-    return time_now
+tz = MyTimeZone(time_zones)
 
 #Find out what IANA time zones are
 #Check zoneinfo.available_timezones() function - how it works?
