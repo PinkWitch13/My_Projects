@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template
 from datetime import datetime
-from my_time import MyTimeZone
+from zoneinfo import ZoneInfo
+
 
 app = Flask(__name__)
 
@@ -8,17 +9,21 @@ app = Flask(__name__)
 @app.route('/time_zone')
 class MyTimeZone():
     
+    time_zones =  list(ZoneInfo.zoneinfo.available_timezones())
     user_time_zone = request.args.get('time_zone')
 
     def user_zone (self):
         user_tz = self.user_time_zone()
         return user_tz
 
-    def what_time_in_zone(self, user_zone, user_time_now):
-        if self.tz(user_zone) == True:
-            user_tz = user_time_now(user_tz)
-            return render_template('time.html', user_tz=user_tz)
+    def what_time_in_zone(self, user_zone, time_zones):
+        for zone in time_zones:
+            if self.user_zone() == zone:
+                ut = user_time_now(user_zone)
+                return render_template('time.html', what_time_in_zone=what_time_in_zone())
         return "Error: invalid ISCA time zone!"
+
+from my_time import user_time_now
 #   if user_tz == None:
 #user_tz  = time_zones['Warsaw']
 #    elif time_zones[user_tz] == True:

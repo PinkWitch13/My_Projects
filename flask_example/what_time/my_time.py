@@ -4,6 +4,7 @@ from app import MyTimeZone
 
 time_zones = zoneinfo.available_timezones()
 
+
 def user_time_now():
     ut_now = str(datetime.datetime.utcnow(tz = zoneinfo.ZoneInfo(time_zones)))
     return ut_now
@@ -11,4 +12,5 @@ def user_time_now():
 tz = MyTimeZone(time_zones)
 
 #Find out what IANA time zones are
-#Check zoneinfo.available_timezones() function - how it works?
+#Check zoneinfo.available_timezones() function - how it wor
+
