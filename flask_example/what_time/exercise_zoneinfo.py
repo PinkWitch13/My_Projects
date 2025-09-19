@@ -1,8 +1,7 @@
 import datetime
 import zoneinfo
 
-def user_time_zone():
-    user_zone = input("Please write your time_zone(ISKA format): \n")
+def user_time_zone(user_zone):
     uz = str(user_zone)
     tz = zoneinfo.available_timezones()
     for zone in tz:
@@ -13,9 +12,12 @@ def user_time_now():
     utz = user_time_zone()  
     now = datetime.datetime.utcnow()
     dt = now.astimezone(tz=zoneinfo.ZoneInfo(utz))
-    print("Your time: %s" % dt)
+#    print("Your time: %s" % dt)
+    return dt
 
-user_time_now()
+from what_time import exercise_zoneinfo
+
+#user_time_now()
 
 
 
